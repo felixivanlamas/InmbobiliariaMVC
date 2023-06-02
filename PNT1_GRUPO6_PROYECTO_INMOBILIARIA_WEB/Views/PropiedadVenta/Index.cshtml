@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PNT1_GRUPO6_PROYECTO_INMOBILIARIA_WEB.PropiedadVenta>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Propiedades en Venta</h1>
+
+<p>
+    <a asp-action="Create">Agregar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.SrcImagen)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.SrcImagen)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPropiedad">Modificar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPropiedad">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPropiedad">Borrar</a> |
+                <a asp-action="Comprar" asp-route-id="@item.IdPropiedad"hidden="@(item.usuario!=null)">Comprar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

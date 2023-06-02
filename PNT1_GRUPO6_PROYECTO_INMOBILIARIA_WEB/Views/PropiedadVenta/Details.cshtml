@@ -1,0 +1,45 @@
+﻿@model PNT1_GRUPO6_PROYECTO_INMOBILIARIA_WEB.PropiedadVenta
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Propiedad en Venta</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt class="col-sm-10" hidden="@(Model.usuario == null)">
+            @(Model.Contrato())
+            <br/>
+        </dt>
+        
+        <div class="card" style="width: 18rem;">
+            <img class="img-fluid img-thumbnail" src="@Model.FotoPropiedadUrl" />
+        </div>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary" asp-action="Comprar" asp-route-id="@Model.IdPropiedad" hidden="@(Model.usuario != null)">Comprar</a> |
+    <a asp-action="Index">Volver a la lista</a>
+</div>
